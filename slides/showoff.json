@@ -1,0 +1,13 @@
+{
+  "name": "Euruko 2011 - In the Loop",
+  "description": "Euruko 2011 - In the Loop",
+  "sections": [
+    {"section":"introduction"},
+    {"section":"basics"},
+    {"section":"ruby_scheduling"},
+    {"section":"reactor_pattern"},
+    {"section":"evented_patterns"},
+    {"section":"redis"},
+    {"section":"case_study"}
+  ]
+}
