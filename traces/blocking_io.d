@@ -60,7 +60,7 @@ dtrace:::END
   normalize(@eavg, 1000);
   normalize(@esum, 1000);
   trunc(@bt, 3);
-  printf("\n\nReactor time allocated on IO bound work, %s\n", execname);
+  printf("\n\nReactor time allocated on I/O bound work, %s\n", execname);
   setopt("aggsortkey");
   printf("%-16s %6s %10s %12s\n", "TICK", "COUNT", "AVG(us)", "SUM(us)");
   printa("%-16.16d %@6d %@10d %@12d\n", @num, @eavg, @esum);

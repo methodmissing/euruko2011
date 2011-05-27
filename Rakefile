@@ -29,7 +29,7 @@ task :context_switch do
   Rake::Task["trace:cpu"].invoke
 end
 
-desc "Non-Blocking IO"
+desc "Non-Blocking I/O"
 task :non_blocking_io do
   ENV["URI"] = "/render"
   ENV["REQUESTS"] = "1000"
@@ -57,14 +57,14 @@ task :blocking_cpu0 do
   Rake::Task["trace:blocking_cpu"].invoke
 end
 
-desc "Blocking on IO"
+desc "Blocking on I/O"
 task :blocking_io do
   ENV["URI"] = "/blocking_lib"
   ENV["REQUESTS"] = "5"
   Rake::Task["trace:blocking_io"].invoke
 end
 
-desc "Blocking on IO - pooled"
+desc "Blocking on I/O - pooled"
 task :blocking_io0 do
   ENV["URI"] = "/non_blocking_lib"
   ENV["REQUESTS"] = "5"

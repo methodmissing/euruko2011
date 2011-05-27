@@ -5,7 +5,7 @@
 * __User Mode__: sandboxed execution without direct access to system resources, user memory only
 * __Kernel Mode__: no access restrictions to resources, access to all system memory
 * Processes spend the vast majority of time in User Mode (usr VS sys CPU time)
-* Privileged access required to memory and IO devices
+* Privileged access required to memory and I/O devices
 * __System calls__ - portable "protected" function calls
 * __Context switch__ between User and Kernel space (expensive)
 

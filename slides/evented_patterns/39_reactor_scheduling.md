@@ -10,5 +10,5 @@
 * __EM::Channel__ - pub/sub, dequeues on the reactor thread
 
 <p class="notes">
-Little / no time waiting on IO - event detection should always amount to work being ready to go.
+Little / no time waiting on I/O - event detection should always amount to work being ready to go.
 </p>

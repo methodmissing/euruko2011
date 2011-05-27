@@ -15,5 +15,5 @@ Avoids signals and thread based timer mechanisms on most platforms.
 
 Not limited to sockets.Can observe filesystem events, spawn processes, perform work at time intervals / ticks.
 
-We'll focus on socket IO
+We'll focus on socket I/O
 </p>

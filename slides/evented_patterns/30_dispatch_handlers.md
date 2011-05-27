@@ -4,7 +4,7 @@
 
 * Binds __low level events__ to handlers
 * Readiness for reading and writing
-* Events bubble up from the multiplexed IO framework
+* Events bubble up from the multiplexed I/O framework
 * select, epoll, kqueue
 * __Abstracts behavior that's not OS agnostic__
 * Responsibilities: __buffering__, __transfer__, __conversion to Strings__

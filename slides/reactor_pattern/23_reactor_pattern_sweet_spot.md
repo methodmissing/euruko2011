@@ -18,5 +18,5 @@ Reproxy support - avoids allocating native Strings to avoid pressure on the GC
 The service access other services or infrastructure over network, but request and response processing
 consume minimal CPU cycles.
 
-IO MUST go through the reactor thread
+I/O MUST go through the reactor thread
 </p>
