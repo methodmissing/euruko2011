@@ -16,5 +16,6 @@ Addresses speed mismatches between producer and consumer (fast network, slow dis
 
 Guards against application changes and swapping (double buffering).
 
-Unbuffered input would switch for each transferred byte.
+Unbuffered input would switch for each transferred byte.We want an optimal balance between filling/draining buffers
+and the cost of context switches.
 </p>

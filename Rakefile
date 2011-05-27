@@ -39,7 +39,7 @@ end
 desc "Reactor events"
 task :reactor do
   ENV["URI"] = "/render"
-  ENV["REQUESTS"] = "1000"
+  ENV["REQUESTS"] = "100"
   Rake::Task["trace:flow"].invoke
 end
 

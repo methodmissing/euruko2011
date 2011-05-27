@@ -9,13 +9,13 @@ dtrace:::BEGIN
 eventmachine$target:::*-entry
 {
   self->tick = arg0;
-  printf("%-30s %-15d\n", probename, self->tick);
+  printf("%-30s\n", probename);
 }
 
 eventmachine$target:::*-return
 /self->tick/
 {
-  printf("%-30s %-15d\n", probename, self->tick);
+  printf("%-30s\n", probename);
 }
 
 dtrace:::END

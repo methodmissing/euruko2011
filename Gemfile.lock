@@ -30,4 +30,5 @@ DEPENDENCIES
   em_mysql2_connection_pool
   eventmachine!
   mysql2
+  rack (= 1.3.0)
   thin_async

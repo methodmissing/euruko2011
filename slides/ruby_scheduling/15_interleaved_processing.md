@@ -1,5 +1,5 @@
 !SLIDE full-page center
 
-# Interleaved #
+# Interleaved Processing #
 
 ![Ideal](ideal.png)
