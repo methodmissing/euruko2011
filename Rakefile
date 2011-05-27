@@ -29,18 +29,11 @@ task :context_switch do
   Rake::Task["trace:cpu"].invoke
 end
 
-desc "Non-Blocking IO errors"
-task :non_blocking_io_errors do
+desc "Non-Blocking IO"
+task :non_blocking_io do
   ENV["URI"] = "/render"
   ENV["REQUESTS"] = "1000"
   Rake::Task["trace:syscall_errors"].invoke
-end
-
-desc "Non-Blocking IO flow"
-task :non_blocking_io_flow do
-  ENV["URI"] = "/render"
-  ENV["REQUESTS"] = "100"
-  Rake::Task["trace:syscall_flow"].invoke
 end
 
 desc "Reactor events"
