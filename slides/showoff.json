@@ -8,6 +8,7 @@
     {"section":"reactor_pattern"},
     {"section":"evented_patterns"},
     {"section":"redis"},
-    {"section":"case_study"}
+    {"section":"case_study"},
+    {"section":"outro"}
   ]
 }

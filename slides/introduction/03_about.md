@@ -3,6 +3,7 @@
 # About #
 
 * Independent Consultant
+* [github.com/methodmissing](http://github.com/methodmissing)
 * Full-time at WildfireApp on the Platform Team
 * Advanced knowledge of Ruby internals
 * Well versed full stack
