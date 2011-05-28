@@ -6,11 +6,23 @@ require 'euruko'
 use Rack::CommonLogger
 use Euruko::Tracer
 
+# Thin::AsyncResponse::Marker fails Rack::Lint in recent Rack releases
+class Rack::Lint
+  def call(env)
+    if env["async.callback"]
+      @app.call(env)
+    else
+      dup._call(env)
+    end
+  end
+end
+
 map '/cpu_bound' do
   run Euruko::Adapters::CpuBound.new
 end
 map '/iterator' do
   run Euruko::Adapters::Iterator.new
+  pp self
 end
 map '/blocking_lib' do
   run Euruko::Adapters::BlockingLib.new
