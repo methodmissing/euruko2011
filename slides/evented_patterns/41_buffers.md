@@ -2,11 +2,11 @@
 
 # Buffers #
 
-* Eventable descriptors should read from kernel buffers as fast as possible
+* Eventable descriptors should fill/drain kernel buffers asap
 * __Connection#send_data does NOT immediately send data to the remote peer__
 * Outbound pages are scheduled on a write queue
 * Written out sometime in the near feature
-* __Vectored I/O__ with the writev() syscall
+* __Vectored I/O__ with the writev(3) syscall
 * Atomically writes data from multiple buffers to a single stream
 
 <p class="notes">
