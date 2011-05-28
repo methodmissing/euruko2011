@@ -14,7 +14,7 @@ module Euruko
   autoload :Adapters,   'euruko/adapters'
 
   def run(metric, trace)
-    raise 'DTrace requires superuser privileges - please run as root' unless Process.uid == 0
+    #raise 'DTrace requires superuser privileges - please run as root' unless Process.uid == 0
     client_pid = EM.fork_reactor do
       EM.add_timer(1){ Euruko::Client.run(ENV["REQUESTS"] || 100, ENV["URI"] || '/') }
     end
