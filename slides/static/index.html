@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Euruko 2011 - In the Loop</title>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/slides.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+    setupPreso(false, './');
+  });
+  </script>
+</head>
+
+<body>
+
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">&larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">z</td><td>toggle help (this)</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content full-page smbullets incremental" ref="introduction/01_frontpage">
+<h1>In the Loop</h1>
+
+<h2>Lourens Naud&#xE9; - <a href="http://euruko2011.org">Euruko 2011</a></h2>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="introduction/02_follow_along">
+<h1>Follow along</h1>
+
+<h2><a href="http://github.com/methodmissing/euruko2011">github.com/methodmissing/euruko2011</a></h2>
+
+<h2>&#xB4;git clone git@github.com:methodmissing/euruko2011.git&#xB4;</h2>
+
+<h2>&#xB4;cd slides &amp;&amp; showoff serve&#xB4;</h2>
+
+<h2><a href="http://localhost:9090">http://localhost:9090</a></h2>
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="introduction/03_about">
+<h1>About</h1>
+
+<ul>
+<li>Independent Consultant</li>
+<li><a href="http://github.com/methodmissing">github.com/methodmissing</a></li>
+<li>Full-time at WildfireApp on the Platform Team</li>
+<li>Advanced knowledge of Ruby internals</li>
+<li>Well versed full stack</li>
+</ul>
+
+
+<p class="notes">
+Independent Consultant living in sunny Madeira Island, Portugal.
+
+Full-time contract at WildfireApp - Applications / Operations, providing support to Product teams for inter-application and infrastructure concerns.
+
+Advanced knowledge of Ruby internals and the author of several offbeat extensions.
+
+Comfortable with any slice of a production stack.
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="introduction/04_why">
+<h1>Why ?</h1>
+
+<ul>
+<li>Popular production tooling in the Ruby ecosystem is event driven</li>
+<li>Nginx, Eventmachine, Redis, 0MQ, rb_thread_select()</li>
+<li><strong>Intentional</strong> seeking enhance throughput or better resource utilization</li>
+<li><strong>Incidental</strong> use through dependencies.DANGER!!!</li>
+<li>State of the community at large</li>
+<li><strong>Inverted flow control and scheduling is hard</strong></li>
+</ul>
+
+
+<p class="notes">
+Event driven tooling has found it's way into most production Ruby deployments.
+Components include Nginx, Eventmachine, Redis, 0MQ as well as the interpreter's own rb_thread_select() I/O scheduler.
+
+We can split into two groups, intentional and incidental users.
+
+Intentional users are seeking to enhance service throughput or realize better resource utilization.
+They would understand very well the end goal, but could still be tripped up by some edge cases.
+
+Many users are exposed to Eventmachine through a dependency tree of a library pulled into their software stack.Might have an event loop firing up in their process without even being aware of it.
+
+There's a large signal to noise ratio in the Ruby community, especially through explosive growth during the last few years - lots with a web development background building core backend services.I'm one of them, but learn't (and am still learning) a bunch of stuff the hard way.
+
+Blogs - it's easy to have opinions, scientific method is hard though.Too much experimentation propogate
+to production systems.
+</p>
+
+
+<p/>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="introduction/05_agenda">
+<h1>Agenda</h1>
+
+<ul>
+<li>Not covering a particular implementation, but a bias towards Eventmachine</li>
+<li>Back to basics</li>
+<li>Ruby I/O scheduling</li>
+<li>Reactor pattern</li>
+<li>Evented patterns</li>
+<li>Case Study - FIX</li>
+</ul>
+
+
+<p class="notes">
+The patterns are important, not differences in semantics between projects - each have their own capabilities, optimizations etc.
+
+We need to agree on a few basic definitions before digging in.
+Modern UNIX system execution modes, resources, and how I/O
+
+Scheduling and execution on the Ruby VM - MRI 18 specific only.No Fiber magic in this talk.
+
+An overview of the Reactor Pattern, sweet spots, pitfalls and it's use cases in high throughput backend services.What NOT to do.
+
+Contrast Eventmachine with Redis, a single threaded evented server with a few tricks up it's sleeve.
+
+A brief case study from a past financial services project.
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets incremental" ref="basics/06_basics">
+<h1>Back to basics</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="basics/07_complexity">
+<h1>Complexity</h1>
+
+<ul>
+<li>Base resources : <strong>CPU</strong>, <strong>memory</strong> and <strong>I/O devices</strong></li>
+<li><strong>Modern systems are complex</strong></li>
+<li>No black box deployments, but the cloud and datacenters</li>
+<li><strong>Network</strong>: the above <strong>resources, elsewhere</strong></li>
+<li>Exposing / consuming APIs over network introduces additional <strong>complexity in both the service and client</strong></li>
+<li>We want a software stack that's resilient to variance and resource contention - <strong>everything can and will degrade</strong></li>
+</ul>
+
+
+<p class="notes">
+Even the smallest of products and projects have huge full-system critical paths.
+
+Most often production deployments are not limited by any single resource, but by interactions between resources and the complex software that ties it all together.
+
+Micro benchmarks on individual subsystems OR single boxes is useless.
+
+Those with cloud deployments are familiar with variable QOS.
+
+Clients aren't always well behaved and not all services are designed for scale.
+</p>
+
+
+<p/>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page center" ref="basics/08_system_calls_diagram">
+<p><img src="file:///Users/lourens/projects/euruko/slides/basics/system_calls.png" width="887" height="426" alt="System calls"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="basics/09_privileges_and_execution">
+<h1>Privileges and execution</h1>
+
+<ul>
+<li><strong>User Mode</strong>: sandboxed execution without direct access to system resources, user memory only</li>
+<li><strong>Kernel Mode</strong>: no access restrictions to resources, access to all system memory</li>
+<li>Processes spend the vast majority of time in User Mode (usr VS sys CPU time)</li>
+<li>Privileged access required to memory and I/O devices</li>
+<li><strong>System calls</strong> - portable "protected" function calls</li>
+<li><strong>Context switch</strong> between User and Kernel space (expensive)</li>
+</ul>
+
+
+<p class="notes">
+The Kernel doesn't need to validate itself
+
+An extra layer between the application and the hardware
+
+Easier programming - secure and portable (mostly)
+
+System calls are much more expensive than a function call in the same process
+</p>
+
+
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="basics/10_io_buffering">
+<h1>I/O Buffering</h1>
+
+<ul>
+<li>File descriptors have buffers for reading and writing</li>
+<li>Application (User Space) buffer and a Kernel buffer</li>
+<li><strong>Decouples</strong> I/O layers</li>
+<li><strong>Throttles</strong> transfer rates</li>
+<li>Avoid data corruption</li>
+<li><strong>Performance</strong>: reduce context switches and concurrent read or write to buffers</li>
+</ul>
+
+
+<p class="notes">
+Nothing's going to happen if the Kernel's buffers aren't being drained / filled.
+
+Addresses speed mismatches between producer and consumer (fast network, slow disk).
+
+Guards against application changes and swapping (double buffering).
+
+Unbuffered input would switch for each transferred byte.We want an optimal balance between filling/draining buffers
+and the cost of context switches.
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="basics/11_blocking_io">
+<h1>Blocking I/O</h1>
+
+<ul>
+<li>Sequential I/O</li>
+<li><strong>May block the requesting thread depending on kernel buffer state</strong></li>
+<li><strong>read(8, 500)</strong> - Kernel read buffer &lt; 500</li>
+<li><strong>write(8, 500)</strong> - Kernel write buffer free space &lt; 500</li>
+</ul>
+
+
+<p class="notes">
+For the rest of this talk, we're doing event driven non-blocking I/O
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="basics/12_non_blocking_io">
+<h1>Non-blocking I/O</h1>
+
+<ul>
+<li>Sequential I/O - <strong>NOT ASYNC</strong>- read or write happens in user space</li>
+<li><strong>Only initiates the I/O operation if it won't block the requesting thread</strong></li>
+<li>Notified of partial or no initiation</li>
+<li><strong>O_NONBLOCK</strong> flag changes fd behavior</li>
+<li><strong>read(2)</strong> and <strong>write(2)</strong> returns <strong>EAGAIN</strong> or <strong>EWOULDBLOCK</strong> if not able to read/write data</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets incremental" ref="ruby_scheduling/13_ruby_scheduling">
+<h1>Ruby I/O scheduling</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page center" ref="ruby_scheduling/14_green_threads_diagram">
+<h1>MRI 1.8</h1>
+
+<p><img src="file:///Users/lourens/projects/euruko/slides/ruby_scheduling/green_threads.png" width="887" height="426" alt="Green threads"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page center" ref="ruby_scheduling/15_interleaved_processing">
+<h1>Interleaved Processing</h1>
+
+<p><img src="file:///Users/lourens/projects/euruko/slides/ruby_scheduling/ideal.png" width="887" height="426" alt="Ideal"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="ruby_scheduling/16_threads_and_io">
+<h1>The Ruby 1.8 situation</h1>
+
+<ul>
+<li>User space green threads are scheduled by the VM</li>
+<li><strong>Fast context switches</strong>, but strong coupling between threads and I/O</li>
+<li><strong>rb_thread_select()</strong> wraps the <strong>select(5)</strong> system call by invoking the scheduler on blocking I/O</li>
+<li>The green thread currently on CPU is put to sleep on blocking I/O</li>
+<li>Yields control to another</li>
+<li>Rescheduled by the VM when the file descriptor's readable or writable.</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="ruby_scheduling/17_rb_thread_select">
+<pre class="sh_c"><code>int
+rb_thread_select(max, read, write, except, timeout)
+    int max;
+    fd_set *read, *write, *except;
+    struct timeval *timeout;
+{</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="ruby_scheduling/18_pitfalls">
+<h1>Scheduler pitfalls</h1>
+
+<ul>
+<li><strong>Limited context and awareness</strong> - OS is the best scheduler</li>
+<li>Works best with <strong>O_NONBLOCK set</strong> on file descriptors</li>
+<li>Scheduler doesn't guarantee your thread would run if select() detects a readable / writeable fd</li>
+<li><strong>Extensions frequently do this wrong</strong>: rb_thread_wait_fd(fd), rb_thread_fd_writable(fd) etc.</li>
+<li>mysql gem</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets incremental" ref="reactor_pattern/19_reactor_pattern">
+<h1>Reactor pattern</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="reactor_pattern/20_reactor_code">
+<pre class="sh_ruby"><code>while true do
+  set_current_time    # update loop time
+  run_timers          # trigger timers
+  add_new_descriptors # attach new fds
+  modify_descriptors  # update fd state
+  break if terminate? # conditional loop break
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page center" ref="reactor_pattern/21_reactor_diagram">
+<p><img src="file:///Users/lourens/projects/euruko/slides/reactor_pattern/reactor.png" width="887" height="426" alt="Reactor"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="reactor_pattern/22_definition">
+<h1>Reactor Pattern - Definition</h1>
+
+<ul>
+<li><strong>Ticks</strong> - main loop with a tick quantum</li>
+<li><strong>Notified to do work by lower level subsystems</strong></li>
+<li>Separates event detection from event processing</li>
+<li>Events are generated from the the execution thread the event loop runs on</li>
+<li><strong>Primarily for solving the c10k problem</strong></li>
+</ul>
+
+
+<p class="notes">
+Readiness for reading, readiness for writing, readiness for accepting.
+
+Avoids signals and thread based timer mechanisms on most platforms.
+
+Not limited to sockets.Can observe filesystem events, spawn processes, perform work at time intervals / ticks.
+
+We'll focus on socket I/O
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="reactor_pattern/23_reactor_pattern_sweet_spot">
+<h1>Reactor Pattern - Sweet spot</h1>
+
+<ul>
+<li><strong>Soft realtime systems, where throughput is more important than processing</strong></li>
+<li><strong>NOT about raw speed</strong>, but handling <strong>more concurrent consumers</strong></li>
+<li>Where <strong>context switching overhead</strong> for threading implementations is very <strong>high</strong></li>
+<li>Load profile where there's <strong>minimal on CPU time per request</strong> - proxies etc.</li>
+<li>Most favorable compared to threaded models as the <strong>ratio of walltime to cpu time increases</strong></li>
+</ul>
+
+
+<p class="notes">
+Synchronization and context switch overhead becomes significant when we aim to improve scalability, the number of concurrent users a system can handle.
+
+Proxy servers, which basically just relay data - cheap memcpy()
+
+Reproxy support - avoids allocating native Strings to avoid pressure on the GC
+
+The service access other services or infrastructure over network, but request and response processing
+consume minimal CPU cycles.
+
+I/O MUST go through the reactor thread
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="reactor_pattern/24_reactor_pattern_limitations">
+<h1>Limitations</h1>
+
+<ul>
+<li>Inverted flow control (<strong>callbacks</strong>) is hard (ditto for debugging)</li>
+<li><strong>SMP</strong> - the event loop don't scale to multiple cores*</li>
+<li><strong>Event handlers is called synchronously</strong></li>
+<li>Half Sync / Half Async pattern could work very well, but requires careful consideration</li>
+<li><strong>Demultiplexer limitations</strong></li>
+<li>All external services accessed needs to be through <strong>non-blocking libraries</strong> as well.</li>
+</ul>
+
+
+<p class="notes">
+Most of the audience would be familiar with this from node.js fame
+
+Not really appropriate for most web application frameworks as they tend to express business logic
+synchronously.
+
+Most implementations only support an event loop per process or core
+
+Work done in handlers is pegged to a single core on an SMP system
+
+Limitations of the underlying demultiplexer implementation eg. select, epoll and kqueue
+
+Language ecosystem may not have an array of non-blocking library implementations.Watch out for "em-*" gems.
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="reactor_pattern/25_event_loop_blockers">
+<h1>Event loop blockers</h1>
+
+<ul>
+<li><strong>CPU bound code / hot loops</strong></li>
+<li>Connects</li>
+<li>Hostname lookups (crappy DNS)</li>
+<li><strong>Synchronous blocking I/O</strong></li>
+<li>Involuntarily context switches (Ruby VM, interrupts etc.)</li>
+<li>Page faults</li>
+<li><strong>Garbage Collection</strong></li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page center" ref="reactor_pattern/26_reactor_blocking_diagram">
+<h1>Blocked Reactor</h1>
+
+<p><img src="file:///Users/lourens/projects/euruko/slides/reactor_pattern/reactor_blocking.png" width="887" height="426" alt="Reactor blocking"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page center" ref="reactor_pattern/27_reactor_threads_diagram">
+<h1>Deferred work</h1>
+
+<p><img src="file:///Users/lourens/projects/euruko/slides/reactor_pattern/reactor_threads.png" width="887" height="426" alt="Reactor threads"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets incremental" ref="evented_patterns/28_evented_patterns">
+<h1>Evented patterns</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="evented_patterns/29_dispatch_handlers_code">
+<pre class="sh_ruby"><code>class EventableDescriptor
+  def read; end             # Tell don't ask
+  def write; end            # interface
+  def heartbeat; end
+  def select_for_read; end  # I/O multiplexer
+  def select_for_write; end # agnostic
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="evented_patterns/30_dispatch_handlers">
+<h1>Dispatch handlers</h1>
+
+<ul>
+<li>Binds <strong>low level events</strong> to handlers</li>
+<li>Readiness for reading and writing</li>
+<li>Events bubble up from the multiplexed I/O framework</li>
+<li>select, epoll, kqueue</li>
+<li><strong>Abstracts behavior that's not OS agnostic</strong></li>
+<li>Responsibilities: <strong>buffering</strong>, <strong>transfer</strong>, <strong>conversion to Strings</strong></li>
+<li>Needs to drain / fill buffers fast</li>
+</ul>
+
+
+<p class="notes">
+Applications shouldn't have to worry about lower level OS details
+
+Buffer management, reading and writing data and construction of native String objects for the app
+handlers
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="evented_patterns/31_application_handlers_code">
+<pre class="sh_ruby"><code>class MyConnection
+  def receive_data(data); end   # Callbacks
+  def connection_completed; end
+  def unbind; end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="evented_patterns/32_application_handlers">
+<h1>Application level handlers</h1>
+
+<ul>
+<li>Binds <strong>high level events</strong> to handlers</li>
+<li>Connection read, connection accepted, disconnected etc.</li>
+<li><strong>Events occur async, but handled synchronously</strong></li>
+<li>Responsibilities: <strong>decoding</strong>, <strong>perform services</strong>, <strong>write data back out to queue</strong></li>
+<li>Multi-method notification interface</li>
+</ul>
+
+
+<p class="notes">
+Always called on the reactor thread - if they need to schedule to a worker thread pool, adds to the
+per event processing overhead.
+
+Method called for each supported event.
+
+Reactor and Dispatcher has context of what occurred and can invoke the callback function directly
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="evented_patterns/33_relation_to_oo_patterns">
+<h1>Relation to OO Patterns</h1>
+
+<ul>
+<li>Like the <strong>Observer</strong> pattern, but a <strong>single mapping</strong> / binding between producer and consumer</li>
+<li><strong>Decoupled responsibilities</strong> - very simple to test</li>
+<li><strong>Open-closed principle</strong> - adding new event handlers don't affect existing ones</li>
+</ul>
+
+
+<p class="notes">
+Like observers, but never a fan out
+
+Event generation is not coupled to the dispatch event handler.We can ignore or stub them out during
+testing.
+
+Can develop an application almost entirely without transport
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="evented_patterns/34_testing_code">
+<pre class="sh_ruby"><code>class MyConnection
+  def receive_data(data) # no need to
+    @queue &lt;&lt; data       # wire transport
+  end
+end
+
+def test_enqueue_on_receive
+  conn.receive_data "stub data"
+  assert_equal 1, conn.queue.size
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="evented_patterns/35_deferrables_code">
+<pre class="sh_ruby"><code>m = EM::Protocols::SmtpClient.send(...)
+m.callback{ p :sent }   # happy path
+m.errback{|e| raise e } # error path
+m.timeout(5) # expect either in &lt; 5 seconds
+
+# continue thread of execution
+method_call</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="evented_patterns/36_deferrables">
+<h1>Deferrables</h1>
+
+<ul>
+<li>Don't call us, we'll call you</li>
+<li>Deferrable pattern: <strong>an object with a promise to call back with a result later</strong></li>
+<li><strong>Callbacks</strong>: successful result</li>
+<li><strong>Errbacks</strong>: error result</li>
+<li><strong>Timeouts</strong>: failure to return a result in an expected timeframe</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="evented_patterns/37_half_sync_half_async">
+<h1>Half Sync / Half Async</h1>
+
+<ul>
+<li><strong>Maximizes resource utilization</strong> through a dedicated thread pool for synchronous library calls</li>
+<li><strong>Works well where some of the work done in callback can be blocking</strong></li>
+<li>For C extensions that do implement rb_thread_select() correctly, but where the scheduler would get in the way</li>
+<li><strong>Sync component</strong>: fast network I/O, manage buffers and handoff data to ...</li>
+<li><strong>Async component / thread pool</strong>: perform blocking reads, inserts etc.</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="evented_patterns/38_reactor_scheduling_code">
+<pre class="sh_ruby"><code># call from reactor thread
+EM.defer do
+  # block called async on a thread pool
+end
+
+# call from thread pool
+EM.schedule do
+  # block called on the reactor thread
+end</code></pre>
+
+<p class="notes">
+We don't know to which thread work has been deferred.
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="evented_patterns/39_reactor_scheduling">
+<h1>Reactor Scheduling</h1>
+
+<ul>
+<li><strong>I/O only ever goes through the reactor thread</strong></li>
+<li>Aim to split work across multiple iterations of the reactor (recursive EM.next_tick)</li>
+<li><strong>EM::TickLoop</strong> - distributes work across reactor ticks</li>
+<li><strong>EM::Queue</strong> - queue abstraction on the reactor scheduler</li>
+<li><strong>EM::Iterator</strong> - concurrent async work</li>
+<li><strong>EM::Channel</strong> - pub/sub, dequeues on the reactor thread</li>
+</ul>
+
+
+<p class="notes">
+Little / no time waiting on I/O - event detection should always amount to work being ready to go.
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="evented_patterns/40_buffers_code">
+<pre class="sh_ruby"><code>class MyConnection
+  def receive_data(inbound)
+    # inbound.size can be a single protocol
+    # message or a batch - stream of data
+  end
+
+  def send_data(outbound)
+    # enqueued on a write queue
+  end
+end</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="evented_patterns/41_buffers">
+<h1>Buffers</h1>
+
+<ul>
+<li>Eventable descriptors should fill/drain kernel buffers asap</li>
+<li><strong>Connection#send_data does NOT immediately send data to the remote peer</strong></li>
+<li>Outbound pages are scheduled on a write queue</li>
+<li>Written out sometime in the near feature</li>
+<li><strong>Vectored I/O</strong> with the writev(3) syscall</li>
+<li>Atomically writes data from multiple buffers to a single stream</li>
+</ul>
+
+
+<p class="notes">
+Written on the current or a few ticks from now, depending on the outbound connection page size.
+
+Vectored I/O saves allocation and memcpy() overhead
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="evented_patterns/42_writev_code">
+<pre class="sh_c"><code>struct iovec {
+    void *iov_base;   /* Starting address */
+    size_t iov_len;   /* Number of bytes */
+};
+
+int bytes_written = writev (GetSocket(), iov, iovcnt);</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets incremental" ref="redis/30_redis">
+<h1>Redis</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="redis/31_cron_loop">
+<h1>Redis server cron loop</h1>
+
+<ul>
+<li>Fires every 100ms</li>
+<li>Throttles expiry for timed out keys (master only)</li>
+<li>Uses 1 ms per server cron loop for rehashing keys</li>
+<li>modula 50 for logging server stats</li>
+<li>Close timed out clients</li>
+<li>Background saving if enabled</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="redis/32_optimizations">
+<h1>Optimizations</h1>
+
+<ul>
+<li>Very little CPU for a few expired keys, but gets more aggressive if more.</li>
+<li>Command performance is critical</li>
+<li>Commands are maintained by core - ensure performant and optimized interfaces</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets incremental" ref="case_study/43_case_study">
+<h1>Case study</h1>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code small" ref="case_study/44_fix_code">
+<pre><code>8=FIX.4.49=4535=049=AB56=CD34=352=20000426-12:05:0610=220
+</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page code" ref="case_study/45_fix_code_split">
+<pre><code>8=FIX.4.4            # FIX version
+9=45                 # body length
+35=0                 # Heartbeat msg
+49=AB                # sender
+56=CD                # receiver
+34=3                 # sequence num
+52=20000426-12:05:06 # sent at
+10=220               # checksum
+</code></pre>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="case_study/46_fix">
+<h1>FIX</h1>
+
+<ul>
+<li>Financial Information eXchange</li>
+<li>Optimized streams of FIX messages: header, body, trailer</li>
+<li><strong>Simple message parsed as per spec and then converted to an object graph</strong></li>
+<li>Market data subscriptions is extremely variable</li>
+<li><strong>Requirement for interleaved processing</strong></li>
+<li><strong>Watch out for compact wire protocols</strong></li>
+</ul>
+
+
+<p class="notes">
+Converting wire messages to complex object graphs in Ruby is not very efficient.
+
+Large chunks of data that needs to be sliced.
+
+GC pressure.
+
+Fast markets batch updates result in a smaller on CPU:wall time ratio.
+
+Wavy throughput.
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="outro/47_recap">
+<h1>Recap</h1>
+
+<ul>
+<li>Resources, system calls and context switches</li>
+<li>Blocking VS non-blocking VS async I/O</li>
+<li><strong>Schedule work out over ticks</strong> to maintain responses times</li>
+<li><strong>Decouple transport and application tiers</strong></li>
+<li>When in doubt, measure</li>
+</ul>
+
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="outro/48_questions">
+<h1>Questions ?</h1>
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page center" ref="outro/49_team">
+<p><img src="file:///Users/lourens/projects/euruko/slides/outro/wildfire.jpg" width="1235" height="824" alt="Team"/></p>
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="outro/50_wildfire">
+<h1><a href="http://www.wildfireapp.com">WildfireApp.com</a></h1>
+
+<h2>Successful Facebook venture - NOT a startup</h2>
+
+<h2>Dynamic, fast paced team</h2>
+
+<h2>Huge brands, great pay and perks</h2>
+
+<h2>apply at <a href="http://wildfireapp.com/buzz/jobs">wildfireapp.com/buzz/jobs</a></h2>
+
+<p class="notes">
+</p>
+
+</div>
+</div><div class="slide" data-transition="none"><div class="content full-page smbullets" ref="outro/51_thanks">
+<h1>Thanks!</h1>
+
+<h2>follow <a href="http://twitter.com/methodmissing">@methodmissing</a></h2>
+
+<h2>fork <a href="http://github.com/methodmissing">github.com/methodmissing</a></h2>
+
+<h2>read <a href="http://blog.methodmissing.com">blog.methodmissing.com</a></h2>
+
+<h2>apply <a href="http://wildfireapp.com/buzz/jobs">wildfireapp.com/buzz/jobs</a></h2>
+
+<p class="notes">
+</p>
+
+</div>
+</div></div>
+
+</body>
+</html>

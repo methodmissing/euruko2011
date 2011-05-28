@@ -1,0 +1,17 @@
+div.code {
+  text-align: left;
+}
+
+.slide {
+    background-image: url("/image/wildfire.png");
+    background-repeat:no-repeat;
+    background-position: 100% 98%;
+    overflow: visible;
+}
+
+#footer {
+  background: black;
+  width: 1000px;
+  height: 40px;
+  top: -40px;
+}
